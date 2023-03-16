@@ -1,6 +1,23 @@
 from flask import Flask, request
 import store
+import time
 app = Flask(__name__)
+
+VERSION = [1, 0, 0] # semver
+
+@app.route("/")
+def index():
+    return {
+        "product": {
+            "name": "Sprout",
+            "dev": "Callie Fox Games",
+            "version": VERSION
+        },
+        "time": time.time(),
+        "live-features": [
+            "lb"
+        ]
+    }
 
 @app.route('/heart')
 def heartbeat():
